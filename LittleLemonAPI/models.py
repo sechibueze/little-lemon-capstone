@@ -16,13 +16,14 @@ class Menu(models.Model):
     def __str__(self) -> str:
         return self.title
     
-# class LemonGroup(Group):
-#     description = models.CharField(max_length=255, default='')
+# Create your models here.
+class Booking(models.Model):
+    first_name = models.CharField(max_length=200)
+    reservation_date = models.DateField()
+    reservation_slot = models.SmallIntegerField(default=10)
 
-# class LemonUser(User):
-#     label = models.CharField(max_length=255, default='')
-
-
+    def __str__(self): 
+        return self.first_name
 
 class Order(models.Model):
     label = models.CharField(max_length=255)

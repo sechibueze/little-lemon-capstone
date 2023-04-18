@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import MenuItem, MenuList, CategoryList, OrderList, update_orders_status, assign_orders_to_delivery, assign_user_to_group, get_orders_by_group
+from .views import MenuItem, MenuList, BookingItemView, BookingView, CategoryList, OrderList, update_orders_status, assign_orders_to_delivery, assign_user_to_group, get_orders_by_group
 from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
-    path('login/', obtain_auth_token, name='user_login'),
+    path('api-token-auth/', obtain_auth_token, name='user_login'),
+    path('bookings/', BookingView.as_view(), name='user_login'),
+    path('bookings/<int:pk>/', BookingItemView.as_view(), name='user_login'),
     path('menu-items/', MenuList.as_view(), name='menu_list'),
     path('menu-items/<int:pk>/', MenuItem.as_view(), name='menu_item'),
     path('category/', CategoryList.as_view(), name='CategoryList'),

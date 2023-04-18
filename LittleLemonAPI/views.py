@@ -8,8 +8,18 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.views import APIView
 from django.core.paginator import Paginator, EmptyPage
 # Create your views here.
-from .models import Menu, Order, Category
-from .serializers import CategorySerializer, MenuSerializer, OrderSerializer
+from .models import Menu, Order, Category, Booking
+from .serializers import CategorySerializer,BookingSerializer, MenuSerializer, OrderSerializer
+
+class BookingView(generics.ListCreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]
+
+class BookingItemView(generics.RetrieveUpdateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]
 
 # 1. The admin can assign users to the manager group
 # 2. You can access the manager group with an admin token

@@ -1,16 +1,7 @@
 from rest_framework import serializers
-from .models import Menu, Category, Order
+from .models import Menu, Category, Order, Booking
 from django.contrib.auth.models import Group, User
 
-
-# class LemonGroupSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = LemonGroup
-#         fields = '__all__'
-# class LemonUserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = LemonUser
-#         fields = '__all__'
 
 class MenuSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
@@ -21,6 +12,11 @@ class MenuSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
+        fields = '__all__'
+        
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
